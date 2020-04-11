@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola mundo con vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Título: {{titulo}}</h1>
+
+        <label for="">Nueva Fruta</label><br>
+        <input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta"><br>
+        <label for="">Nueva Cantidad</label><br>
+        <input type="number" v-model="nuevaCantidad" @keyup.enter="agregarFruta"><br>
+        <!--Para un evento se puede utilizar v-on:click="method_name" o con el @click="method_name"-->
+        <button @click="agregarFruta">Agregar</button>
+
+        <h3>Nombre: {{nombre}} <br> Apellido: {{apellido}} <br> Edad: {{edad}}</h3>
+        <!--For en vue iterando un array-->
+        <h2>Hobbies</h2>
+        <ul>
+            <li v-for="hobbie of hobbies"> {{hobbie}} </li>
+        </ul>
+        <!--For en vue iterando objetos-->
+        <h2>Frutas Favoritas</h2>
+        <ul>
+            <li v-for="fruta of frutas">
+                <input type="number" v-model.number="fruta.cantidad">
+                Nombre: {{fruta.nombre}}
+                <button @click="fruta.cantidad++">+</button><button @click="fruta.cantidad--">-</button>
+                <span v-if="fruta.cantidad === 0">Sin stock</span>
+                <span v-if="fruta.nombre === 'manzana'"> Esta fruta no me gusta</span>
+            </li>
+        </ul>
+        <h4>TOTAL: {{ sumarFrutas }} </h4>
+        
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../files_js/01.js"></script>
+</body>
+</html>
